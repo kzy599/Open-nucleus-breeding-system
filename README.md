@@ -1,4 +1,9 @@
 # Open-nucleus-breeding-system
+
+Author:
+Ziyi Kang kangziyi1998@163.com
+Sheng Luan luansheng@ysfri.ac.cn
+
 Description
 
 This project presents a simulation study published in 2023. The R script provided here facilitates the simulation of breeding schemes for ONBS and CNBS, while also calculating essential population parameters.
