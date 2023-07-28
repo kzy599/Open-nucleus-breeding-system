@@ -1,7 +1,7 @@
 # Open-nucleus-breeding-system
 
 Author:
-Ziyi Kang kangziyi1998@163.com
+Ziyi Kang kangziyi1998@163.com;
 Sheng Luan luansheng@ysfri.ac.cn
 
 Description
