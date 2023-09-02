@@ -21,12 +21,13 @@ load(paste("G0",r,".rda",sep=""))
 
 if(r==1){
 dir.creat(paste(wdyw,pname,nMP/150*100,sep=""))
-}
-
+  
 scr= list.files(scrdir)
+
 scr = scr[scr%flike%".R"]
 
 file.copy(from = paste(scrdir,scr,sep = "/"),to = paste(wdyw,pname,nMP/150*100,sep=""))
+}
 
 setwd(paste(wdyw,pname,nMP/150*100,sep=""))
 
