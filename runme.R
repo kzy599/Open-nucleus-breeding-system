@@ -21,12 +21,12 @@ load(paste("G0",r,".rda",sep=""))
 
 if(r==1){
 dir.creat(paste(wdyw,pname,nMP/150*100,sep=""))
-  
-scr= list.files(scrdir)
 
+scr= list.files(scrdir)
 scr = scr[scr%flike%".R"]
 
 file.copy(from = paste(scrdir,scr,sep = "/"),to = paste(wdyw,pname,nMP/150*100,sep=""))
+
 }
 
 setwd(paste(wdyw,pname,nMP/150*100,sep=""))
@@ -49,6 +49,10 @@ output <- data.frame(generation=0:(nGeneration),
                      genicVg_MP = numeric(nGeneration+1),
                      pheno=numeric(nGeneration+1),
                      ibdle = rep(calibd(pop_founder),(nGeneration+1)),
+                     mean_gv_founder = rep(meanG(pop_founder),(nGeneration+1)),
+                     mean_D_founder = rep(mean(needpara_founder$gv_d),(nGeneration+1)),
+                     mean_A_founder = rep(mean(needpara_founder$gv_a),(nGeneration+1)),
+                     mean_gvu_founder = rep(mean(needpara_founder$gv_mu),(nGeneration+1)),
                      d2infounder = rep(varD(pop_founder)/varP(pop_founder),(nGeneration+1)),
                      d2 = numeric(nGeneration+1),
                      d2_MP = numeric(nGeneration+1),
@@ -69,7 +73,14 @@ output <- data.frame(generation=0:(nGeneration),
                      h2 = numeric(nGeneration+1),
                      nCoancestor = numeric(nGeneration+1),
                      identicalp = numeric(nGeneration+1),
-                     accuracy = numeric(nGeneration+1))
+                     accuracy = numeric(nGeneration+1),
+                     accuracy_con = numeric(nGeneration+1),
+                     accuracy_mp_con = numeric(nGeneration+1),
+                     sameparents = numeric(nGeneration+1),
+                     samecandidates = numeric(nGeneration+1),
+                     mean_D = numeric(nGeneration+1),
+                     mean_A = numeric(nGeneration+1),
+                     mean_gvu = numeric(nGeneration+1))
 Geno <-vector(mode="list", length=21)
 Aid <-vector(mode="list", length=21)
 Pid <- vector(mode="list", length=21)

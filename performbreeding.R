@@ -14,6 +14,13 @@ for(g in 0:nGeneration){
      nucleusgeno = rbind(nucleusgeno,MPpgeno)
    }
    
+
+  if(exists("contrast")){
+    source("pblupcon.R")
+    conebv = alldata[,.(AnimalID,ebv)]
+    source("conselect.R")
+   }
+   
    if(gem=="ssGBLUP"){
      genodt<- as.data.table(nucleusgeno,keep.rownames = TRUE)
 
@@ -32,7 +39,7 @@ for(g in 0:nGeneration){
    }else {
     source("pblup.R")
    }
-
+   
 
     pop@ebv = abstractebv_blupf90(pop = pop, dt = alldata )
 

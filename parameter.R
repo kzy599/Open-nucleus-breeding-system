@@ -1,18 +1,13 @@
 #program name
-pname = "os" #os cs cp op
+pname = "os" #os cp op 
 
 #genetic evolution method
-#The parameter must not be changed unless you have been familiar with this program
-if(pname%in%c(os,cs)){
 gem = "ssGBLUP"#PBLUP
-}else{
-gem = "PBLUP"
-}
 
 #gradients 10% 30% 50%
 #the number of parents from MP account for all parents
 #15/150 = 10% 45/150 = 30%  75/150 = 50% 
-nMP = 15 # 45 75 
+nMP = 75 # 45 75 
 
 #numeber of female
 nFemale = 100
@@ -61,6 +56,9 @@ MutRate = 2.5E-7
 
 RecRate = 1.67E-8
 
-#what work dir you want?
-#the dir path must end with /
-wdyw = "/home/"
+#You can give any value for "contrast",
+# because the program would check whether the "contrast" exists in the globe environment
+# and to take the corresponding precedure
+#if you don't want to contrast the accuracy between genomic and pedigree-based selection
+#you should remove the parameters
+contrast = TRUE

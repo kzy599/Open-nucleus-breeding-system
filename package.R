@@ -17,6 +17,12 @@ abstractebv_blupf90 = function(pop,dt){
   return(popebv)
 }
 
+abstractebv = function(pop,dt){
+  reqid = paste("Animal_",sprintf("%0*d",9,as.numeric(pop@id)),sep = "")
+  popebv = dt$ebv[match(reqid,dt$AnimalID)]
+  return(popebv)
+}
+
 calinbya2 <- function(snp_012_dt,snpfre){
   calformula <- function(x, snpfre){
     y <- mean((x^2 - ((1 + 2 * snpfre) * x) + 2 * (snpfre^2)) / (2 * snpfre * (1 - snpfre)), na.rm = TRUE)
@@ -105,4 +111,9 @@ calibd = function(pop_founder){
  pop_inb_founder= makeDH(pop_founder)
  x = round(((meanG(pop_founder) - meanG(pop_inb_founder))/meanG(pop_founder))*100,digits =3)
  return(x)
+}
+
+calmeanD = function(pop){
+  mean_D = meanG(pop) - meanG(makeDH(pop))
+  return(mean_D)
 }

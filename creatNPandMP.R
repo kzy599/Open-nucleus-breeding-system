@@ -11,6 +11,25 @@ if(pname%in%c("os","op")&!exists("pop_MP")){
   targetDegree = 45,
   use = "ebv"
 )
+if(exists("contrast")){
+pop_con <- ocsBLUP(
+  pop = pop_nucleus_candidate_con,
+  pedmore = ped,
+  number = 9,
+  pedkf = FALSE,
+  nCrosses = nCrosses,
+  nProgenyPerCross = nProgeny,
+  nFemalesMax = nFemale,
+  nMalesMax = nMale,
+  equalizeFemaleContributions =TRUE,
+  equalizeMaleContributions = TRUE,
+  targetDegree = 45,
+  use = "ebv"
+)
+output$sameparents[g+1] = sum(unique(c(pop_con@mother,pop_con@father)) %in% unique(c(pop@mother,pop@father)))
+}
+ 
+
   if(nooverlap==TRUE){
   MP_fam_ind = MP_fam_ind[setdiff(MP_fam_ind@id,unique(c(pop@mother,pop@father)))]
   }
@@ -65,6 +84,12 @@ if(pname%in%c("os","op")&!exists("pop_MP")){
 
     pop_nucleus_candidate_mixM <-c(pop_MP_candidate_M,nucleus_fam_ind_F)
 
+    if(exists("contrast")){
+      pop_nucleus_candidate_mixF_con <- c(pop_MP_candidate_F_con,nucleus_fam_ind_M_con)
+
+      pop_nucleus_candidate_mixM_con <-c(pop_MP_candidate_M_con,nucleus_fam_ind_F_con)
+    }
+
     if(gem=="ssGBLUP"){
      mix_FemalePart <- ocs(
         pop = pop_nucleus_candidate_mixF,
@@ -77,6 +102,22 @@ if(pname%in%c("os","op")&!exists("pop_MP")){
         targetDegree = 45,
         use = "ebv"
       )
+      if(exists("contrast")){
+        mix_FemalePart_con <- ocsBLUP(
+        pop = pop_nucleus_candidate_mixF_con,
+        pedmore = pedmore,
+        number = 9,
+        pedkf = TRUE,
+        nCrosses = nMP*(2/3),
+        nProgenyPerCross = 200,
+        nFemalesMax = nMP*(2/3),
+        nMalesMax = nMP*(1/3),
+        equalizeFemaleContributions = TRUE,
+        equalizeMaleContributions = TRUE,
+        targetDegree = 45,
+        use = "ebv"
+      )
+      }
       #建立扩繁父本x核心母本的混合家系
       mix_MalePart <- ocs(
         pop = pop_nucleus_candidate_mixM,
@@ -89,11 +130,30 @@ if(pname%in%c("os","op")&!exists("pop_MP")){
         targetDegree = 45,
         use = "ebv"
       )
-
+      if(exists("contrast")){
+        mix_MalePart_con <- ocsBLUP(
+        pop = pop_nucleus_candidate_mixM_con,
+        pedmore = pedmore,
+        number = 9,
+        pedkf = TRUE,
+        nCrosses = nMP*(2/3),
+        nProgenyPerCross = 200,
+        nFemalesMax = nMP*(2/3),
+        nMalesMax = nMP*(1/3),
+        equalizeFemaleContributions = TRUE,
+        equalizeMaleContributions = TRUE,
+        targetDegree = 45,
+        use = "ebv"
+      )
+      }
       if(nMP!=75){
         mix_parents_nucleus <- c(unique(mix_FemalePart@father),unique(mix_MalePart@mother))
 
+        if(exists("contrast")){ mix_parents_nucleus_con <- c(unique(mix_FemalePart_con@father),unique(mix_MalePart_con@mother))}
+
         pop_nucleus_candidate_removeMix <- pop_nucleus_candidate[setdiff(pop_nucleus_candidate@id,mix_parents_nucleus)]
+
+        if(exists("contrast")){pop_nucleus_candidate_removeMix_con <- pop_nucleus_candidate_con[setdiff(pop_nucleus_candidate_con@id,mix_parents_nucleus_con)]}
 
         pop_nucleus <- ocs(
         pop = pop_nucleus_candidate_removeMix,
@@ -107,10 +167,33 @@ if(pname%in%c("os","op")&!exists("pop_MP")){
         use = "ebv"
       )
       pop <- c(mix_FemalePart,mix_MalePart,pop_nucleus)
+
+      if(exists("contrast")){
+        pop_nucleus_con <- ocsBLUP(
+        pop = pop_nucleus_candidate_removeMix_con,
+        pedmore = ped,
+        number = 9,
+        pedkf = FALSE,
+        nCrosses = (100-(nMP*(4/3))),
+        nProgenyPerCross = 200,
+        nFemalesMax = (100-(nMP*(4/3))),
+        nMalesMax = ((100-(nMP*(4/3)))/2),
+        equalizeFemaleContributions = TRUE,
+        equalizeMaleContributions = TRUE,
+        targetDegree = 45,
+        use = "ebv"
+      )
+      pop_con <- c(mix_FemalePart_con,mix_MalePart_con,pop_nucleus_con)
+
+      output$sameparents[g+1] = sum(unique(c(pop_con@mother,pop_con@father)) %in% unique(c(pop@mother,pop@father)))
+      }
       }else{
       pop <- c(mix_FemalePart,mix_MalePart)
+      if(exists("contrast")){
+        pop_con <- c(mix_FemalePart_con,mix_MalePart_con)
+        output$sameparents[g+1] = sum(unique(c(pop_con@mother,pop_con@father)) %in% unique(c(pop@mother,pop@father)))
+        }
       }
-
       if(nooverlap==TRUE){
   MP_fam_ind = MP_fam_ind[setdiff(MP_fam_ind@id,unique(c(pop@mother,pop@father)))]
 }
@@ -212,6 +295,25 @@ pop_MP <- ocsBLUP(
   targetDegree = 45,
   use = "ebv"
 )
+
+if(exists("contrast")){
+pop_con <- ocsBLUP(
+  pop = pop_nucleus_candidate_con,
+  pedmore = ped,
+  number = 9,
+  pedkf = FALSE,
+  nCrosses = nCrosses,
+  nProgenyPerCross = nProgeny,
+  nFemalesMax = nFemale,
+  nMalesMax = nMale,
+  equalizeFemaleContributions =TRUE,
+  equalizeMaleContributions = TRUE,
+  targetDegree = 45,
+  use = "ebv"
+)
+output$sameparents[g+1] = sum(unique(c(pop_con@mother,pop_con@father)) %in% unique(c(pop@mother,pop@father)))
+}
+
   }else{
 pop <- ocsBLUP(
   pop = pop_nucleus_candidate,

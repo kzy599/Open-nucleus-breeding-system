@@ -95,10 +95,20 @@ if (g == 0) {
   }
 
     output$accuracy[g+1] <- cor(pop_nucleus_candidate@gv,pop_nucleus_candidate@ebv)
-    if(exists("pop_MP_candidate")){
-      output$accuracy_mp[g+1] <- cor(pop_MP_candidate@gv,pop_MP_candidate@ebv)
-    }
+    
+    if(exists("contrast")){
+      output$accuracy_con[g+1] <- cor(pop_nucleus_candidate@gv,abstractebv(pop = pop_nucleus_candidate,dt = conebv))
+
+      output$samecandidates[g+1] = sum(pop_nucleus_candidate@id %in% pop_nucleus_candidate_con@id)
+      }
     output$inbreeding[g+1] <- inbreeding
+        
+    if(exists("pop_MP_candidate")){output$accuracy_mp[g+1] <- cor(pop_MP_candidate@gv,pop_MP_candidate@ebv)}
+    
+    needpara = genParam(pop)
+    output$mean_gvu[g+1] = mean(needpara$gv_mu)
+    output$mean_D[g+1] = mean(needpara$gv_d)
+    output$mean_A[g+1] = mean(needpara$gv_a)
     output$inbreeding_plink[g+1] <- inbreeding_plink
     output$LD[g+1] <- LD
     output$LDscore[g+1] <- LDscore
