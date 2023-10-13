@@ -44,7 +44,7 @@ nci = 6
 ncf_MP = 8
 
 #the number of candidate individuals in each candidate family for construting MP
-nci_MP = 12
+nci_MP = 9
 
 #the overlap between NP parents for construcing the next generation MP and NP
 nooverlap = FALSE
