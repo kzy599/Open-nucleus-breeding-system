@@ -62,3 +62,7 @@ RecRate = 1.67E-8
 #if you don't want to contrast the accuracy between genomic and pedigree-based selection
 #you should remove the parameters
 contrast = TRUE
+
+#what work dir you want?
+#the dir path must end with /
+wdyw = "/home/"
