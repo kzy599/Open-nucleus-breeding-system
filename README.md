@@ -22,10 +22,12 @@ Please make sure you have the "devtools" package installed to fetch any required
 
 Getting Started
 
-Place all the scripts in the same directory.
+Place the "main" in the work directory which you want.
 Set the desired parameters in the parameter.R file.
 Execute the loadfile.R script to generate founder populations. The number of founder populations is determined by the repeat times for each breeding scheme. Adjust the loops accordingly in runme.R and loadfile.R.
 Finally, load runme.R to produce the required breeding schemes. Be prepared for longer execution times, and consider distributing the load by running the scripts on multiple files simultaneously.
+If you want to contrat the accuracy of EBV for model include inbreeding covariate versus not include, please "cd "wdyw"/main/model_inbreeding_covariate" and then load the runme.R.
+
 Note
 
 Two files, ocs_SC.R and ocsBLUP_sc.R, have been modified to change "gender" to "sex". Additionally, ocsBLUP_sc.R includes a function to generate the A matrix, replacing the G matrix. These modifications were derived from the source code of the ocs() function in the R package AlphaLearn.
