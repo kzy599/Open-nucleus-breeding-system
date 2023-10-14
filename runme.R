@@ -11,9 +11,12 @@ source("parameter.R")
 #source package
 source("package.R")
 
-scrdir= getwd()
+nchar("Open_nucleus")
+if(subwdyw)
 
-if(scrdir != substr(wdyw,1,nchar(wdyw)-1)){stop("Current dir must consisten with the wdyw you set in parameter.R ")}
+setwd(substr(wdyw,1,nchar(wdyw)-1))
+
+scrdir= getwd()
 
 setwd(paste(wdyw,"FG0",sep=""))
 
