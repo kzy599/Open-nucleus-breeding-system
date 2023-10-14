@@ -22,11 +22,11 @@ Please make sure you have the "devtools" package installed to fetch any required
 
 Getting Started
 
-Place the "main" in the work directory which you want.
+Place the "Open-nucleus-breeding-system-main" in the work directory which you want ("wdyw"). Please do not change the name of "Open-nucleus-breeding-system-main"
 Set the desired parameters in the parameter.R file.
 Execute the loadfile.R script to generate founder populations. The number of founder populations is determined by the repeat times for each breeding scheme. Adjust the loops accordingly in runme.R and loadfile.R.
 Finally, load runme.R to produce the required breeding schemes. Be prepared for longer execution times, and consider distributing the load by running the scripts on multiple files simultaneously.
-If you want to contrat the accuracy of EBV for model include inbreeding covariate versus not include, please "cd "wdyw"/main/model_inbreeding_covariate" and then load the runme.R.
+If you want to contrat the accuracy of EBV for model include inbreeding covariate versus not include, please "cd "wdyw"/Open-nucleus-breeding-system-main/model_inbreeding_covariate" and then load the runme.R.
 
 Note
 
