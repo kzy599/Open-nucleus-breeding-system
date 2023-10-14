@@ -11,6 +11,10 @@ source("parameter.R")
 #source package
 source("package.R")
 
+nc = nchar("Open-nucleus-breeding-system-main/")
+  
+if(substr(wdyw,nchar(wdyw)-nchar(nc),nchar(wdyw))!= "Open-nucleus-breeding-system-main/"){stop("The wdyw must end with Open-nucleus-breeding-system-main/")}
+
 setwd(paste(wdyw,"model_inbreeding_covariate",sep = ""))
 
 inbdir = getwd()
