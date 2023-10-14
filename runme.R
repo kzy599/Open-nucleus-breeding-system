@@ -13,7 +13,7 @@ source("package.R")
 
 nc = nchar("Open-nucleus-breeding-system-main/")
   
-if(substr(wdyw,nchar(wdyw)-nchar(nc),nchar(wdyw))!= "Open-nucleus-breeding-system-main/"){stop("The wdyw must end with Open-nucleus-breeding-system-main/")}
+if(substr(wdyw,nchar(wdyw)-nc+1,nchar(wdyw))!= "Open-nucleus-breeding-system-main/"){stop("The wdyw must end with Open-nucleus-breeding-system-main/")}
 
 setwd(substr(wdyw,1,nchar(wdyw)-1))
 
