@@ -15,6 +15,8 @@ parameter_txt_v <- c(
   "RESIDUAL_VARIANCE",
   (varP(pop_founder)-varG(pop_founder)),
   "EFFECT",
+  "12 cross alpha",
+  "EFFECT",
   "11 cov",
   "EFFECT",
   # *个体编号列位置，crossclassified, 字符类型
@@ -51,8 +53,8 @@ setorder(solution,level)
 rename<- fread(input = "renadd02.ped",sep = " ")
 trueoder<- rename[,.(V1,V10)]
 setorder(trueoder,V1)
-ebv<- solution[`trait/effect`==2,solution]
-output$ibdcoe[g+1] <- solution[`trait/effect`==1,solution]
+ebv<- solution[`trait/effect`==3,solution]
+output$ibdcoe[g+1] <- solution[`trait/effect`==2,solution]
 trueorder<- cbind(trueoder,ebv)
 setorder(trueorder,V10)
 trueorder<- as.data.table(trueorder)
