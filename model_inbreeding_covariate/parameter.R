@@ -58,5 +58,6 @@ RecRate = 1.67E-8
 
 contrast = TRUE
 
-#The dir must be the highest dir which contain all files and subdir of the program
-wdyw = "/home/"
+#what work dir you want?
+#the dir path must end with Open-nucleus-breeding-system-main/
+wdyw = "/home/Open-nucleus-breeding-system-main/"
