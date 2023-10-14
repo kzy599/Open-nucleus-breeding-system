@@ -12,10 +12,10 @@ source("parameter.R")
 
 #creat dir for founder and G0 population
 if(r==1){
-dir.creat(paste(wdyw,"Open-nucleus-breeding-system-main/","FG0",sep=""))
+dir.creat(paste(wdyw,"FG0",sep=""))
 }
 
-founderdir= paste(wdyw,"Open-nucleus-breeding-system-main/","FG0",sep="")
+founderdir= paste(wdyw,"FG0",sep="")
 
 #creat base and G0 population
 source("population.R")
