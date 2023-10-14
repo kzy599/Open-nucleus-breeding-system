@@ -57,3 +57,5 @@ MutRate = 2.5E-7
 RecRate = 1.67E-8
 
 contrast = TRUE
+
+wdyw = "/home/"
