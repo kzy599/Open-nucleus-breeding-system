@@ -11,8 +11,9 @@ source("parameter.R")
 #source package
 source("package.R")
 
-scrdir= getwd()
-
+scrdir = getwd()
+inbdir = paste(scrdir,"/model_inbreeding_covariate",sep="")
+  
 setwd(paste(wdyw,"FG0",sep=""))
 
 #load repeat G0 population
@@ -20,16 +21,21 @@ load(paste("G0",r,".rda",sep=""))
 
 
 if(r==1){
-dir.creat(paste(wdyw,pname,nMP/150*100,sep=""))
+dir.creat(paste(wdyw,"model_inbreeding_covariate/",pname,nMP/150*100,sep=""))
 
 scr= list.files(scrdir)
 scr = scr[scr%flike%".R"]
 
-file.copy(from = paste(scrdir,scr,sep = "/"),to = paste(wdyw,pname,nMP/150*100,sep=""))
+inbr = list.files(inbdir)
+inbr = inbrr[inbr%flike%".R"]
+
+file.copy(from = paste(scrdir,scr,sep = "/"),to = paste(wdyw,"model_inbreeding_covariate/",pname,nMP/150*100,sep=""))
+
+file.copy(from = paste(inbdir,inbr,sep = "/"),to = paste(wdyw,"model_inbreeding_covariate/",pname,nMP/150*100,sep=""))
 
 }
 
-setwd(paste(wdyw,pname,nMP/150*100,sep=""))
+setwd(paste(wdyw,"model_inbreeding_covariate/",pname,nMP/150*100,sep=""))
 
 output <- data.frame(generation=0:(nGeneration),
                      mean_gv=numeric(nGeneration+1),
