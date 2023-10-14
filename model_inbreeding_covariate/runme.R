@@ -11,8 +11,8 @@ source("parameter.R")
 #source package
 source("package.R")
 
-scrdir = getwd()
-inbdir = paste(scrdir,"/model_inbreeding_covariate",sep="")
+inbdir = getwd()
+scrdir = substr(inbdir,1,nchar(inbdir) - nchar("/model_inbreeding_covariate"))
   
 setwd(paste(wdyw,"FG0",sep=""))
 
