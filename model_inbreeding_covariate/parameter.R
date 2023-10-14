@@ -58,4 +58,5 @@ RecRate = 1.67E-8
 
 contrast = TRUE
 
+#The dir must be the highest dir which contain all files and subdir of the program
 wdyw = "/home/"
