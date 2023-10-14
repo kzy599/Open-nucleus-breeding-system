@@ -13,6 +13,8 @@ source("package.R")
 
 scrdir= getwd()
 
+if(scrdir != substr(wdyw,1,nchar(wdyw)-1)){stop("Current dir must consisten with the wdyw you set in parameter.R ")}
+
 setwd(paste(wdyw,"FG0",sep=""))
 
 #load repeat G0 population
