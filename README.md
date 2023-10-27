@@ -30,4 +30,4 @@ If you want to contrat the accuracy of EBV for model include inbreeding covariat
 
 Note
 
-Two files, ocs_SC.R and ocsBLUP_sc.R, have been modified to change "gender" to "sex". Additionally, ocsBLUP_sc.R includes a function to generate the A matrix, replacing the G matrix. These modifications were derived from the source code of the ocs() function in the R package AlphaLearn.
+Two files, ocs_SC.R and ocsBLUP_sc.R, have been modified to change "gender" to "sex". Additionally, ocsBLUP_sc.R includes a function to generate the A matrix, replacing the G matrix. ocs_SC.R and ocsBLUP_sc.R are sourced from the code of AlphaLearn. These scripts have been included in this project to aid in specific functionalities. Please refer to the original AlphaLearn documentation or source code for additional information regarding these scripts.
