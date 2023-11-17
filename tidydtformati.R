@@ -33,6 +33,9 @@ collcetdata_founder[,c("FamilyID"):=NA]
 
 #add col for EBV
 collcetdata_founder[,c("ebv"):=NA]
+
+if(pname %in% c("cp","cs")){collcetdata_founder[,c("ib"):= 0]}
+
 }
 
 if(g>0 & !exists("mix_FemalePart") ){
@@ -101,6 +104,9 @@ CollectData[,c("FamilyID"):=paste(CollectData$SireID,"_",CollectData$DamID,sep="
 #add col for ebv
 CollectData[,c("ebv"):=NA]
 
+if(pname %in% c("cp","cs")){CollectData[,c("ib"):= NA]}
+
+
 #make the type of M2BW be numeric
 CollectData$M2BW <- as.numeric(CollectData$M2BW)
 
@@ -122,6 +128,7 @@ if(g==0){
   alldata <- rbind(alldata,collcetdata_MP_parents,CollectData)
 }
 
+if(pname %in% c("cp","cs")){alldata[AnimalID%in%ped_thisGeneration$AnimalID,ib:=calinbped(alldata = alldata,ped_thisGeneration = ped_thisGeneration)]}
 
 if(g==0){
   ped <- ped_thisGeneration

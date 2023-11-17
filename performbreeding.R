@@ -16,7 +16,7 @@ for(g in 0:nGeneration){
    
 
   if(exists("contrast")){
-    source("pblupcon.R")
+    if(pname%in%c("cp","cs")){source("pblupconib.R")}else{source("pblupcon.R")}
     conebv = alldata[,.(AnimalID,ebv)]
     source("conselect.R")
    }
@@ -35,9 +35,11 @@ for(g in 0:nGeneration){
      genodt <-data.table(rn,genodt)
 
      fwrite(genodt,file = "geno_selectedparents.txt",sep = " ",col.names = FALSE, row.names = FALSE,quote = FALSE)
-     source("ssGBLUP.R")
+     if(pname%in%c("cp","cs")){source("ssGBLUPib.R")}else{source("ssGBLUP.R")}
    }else {
-    source("pblup.R")
+
+    if(pname%in%c("cp","cs")){source("pblupib.R")}else{source("pblup.R")}
+  
    }
    
 

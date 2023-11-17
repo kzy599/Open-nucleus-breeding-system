@@ -117,3 +117,18 @@ calmeanD = function(pop){
   mean_D = meanG(pop) - meanG(makeDH(pop))
   return(mean_D)
 }
+
+
+calinbped = function(alldata, ped_thisGeneration){
+ped_calparameters = alldata[,1:3]
+
+keep=ped_calparameters[AnimalID%in%ped_thisGeneration$AnimalID,AnimalID]
+
+Pedig <- prePed(ped_calparameters, keep=keep)
+
+Res   <- pedInbreeding(Pedig)
+
+inbreeding <- Res$Inbr[match(keep,Res$Indiv)]
+
+return(round(inbreeding,4))
+}
