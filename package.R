@@ -118,6 +118,13 @@ calmeanD = function(pop){
   return(mean_D)
 }
 
+calinbgeno = function(poplist,snpfre){
+  snp_012_dt = pullSnpGeno(poplist)
+
+  inb = calinbya2(snp_012_dt = snp_012_dt, snpfre = snpfre)
+  
+  return(round(inb,4))
+}
 
 calinbped = function(alldata, ped_thisGeneration){
 ped_calparameters = alldata[,1:3]

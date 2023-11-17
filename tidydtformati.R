@@ -34,7 +34,22 @@ collcetdata_founder[,c("FamilyID"):=NA]
 #add col for EBV
 collcetdata_founder[,c("ebv"):=NA]
 
-if(pname %in% c("cp","cs")){collcetdata_founder[,c("ib"):= 0]}
+if(pname %in% c("cp","cs")){
+  if(gem=="ssGBLUP"){
+
+  if(!exists("snpfre_v")){
+  snp_012_dt = pullSnpGeno(pop_founder)
+  snpfre_v <- apply(snp_012_dt, 2, function(x){
+    single_snpfre_s <- sum(x, na.rm = TRUE)/(2*length(x))
+    return(single_snpfre_s)
+  })
+}
+
+  collcetdata_founder[,c("ib"):=calinbgeno(poplist = pop_parents,snpfre = snpfre_v)]
+}else{
+  collcetdata_founder[,c("ib"):= 0]
+}
+}
 
 }
 
@@ -104,7 +119,14 @@ CollectData[,c("FamilyID"):=paste(CollectData$SireID,"_",CollectData$DamID,sep="
 #add col for ebv
 CollectData[,c("ebv"):=NA]
 
-if(pname %in% c("cp","cs")){CollectData[,c("ib"):= NA]}
+if(pname %in% c("cp","cs")){
+  if(gem == "ssGBLUP"){
+  CollectData[,c("ib"):=calinbgeno(poplist = pop,snpfre = snpfre_v)]
+}else{
+  
+  CollectData[,c("ib"):= NA ]
+}
+}
 
 
 #make the type of M2BW be numeric
@@ -128,7 +150,9 @@ if(g==0){
   alldata <- rbind(alldata,collcetdata_MP_parents,CollectData)
 }
 
-if(pname %in% c("cp","cs")){alldata[AnimalID%in%ped_thisGeneration$AnimalID,ib:=calinbped(alldata = alldata,ped_thisGeneration = ped_thisGeneration)]}
+if(pname %in% c("cp","cs")){
+  if(gem != "ssGBLUP") {alldata[AnimalID%in%ped_thisGeneration$AnimalID,ib:=calinbped(alldata = alldata,ped_thisGeneration = ped_thisGeneration)]}
+}
 
 if(g==0){
   ped <- ped_thisGeneration
