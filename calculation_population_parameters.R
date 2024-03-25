@@ -99,6 +99,7 @@ if (g == 0) {
     if(exists("contrast")){
       output$accuracy_con[g+1] <- cor(pop_nucleus_candidate@gv,abstractebv(pop = pop_nucleus_candidate,dt = conebv))
 
+      #since the candidate selection in MP using phenotype, only accounted for the number of identical candidates from NP
       output$samecandidates[g+1] = sum(pop_nucleus_candidate@id %in% pop_nucleus_candidate_con@id)
       }
     output$inbreeding[g+1] <- inbreeding
