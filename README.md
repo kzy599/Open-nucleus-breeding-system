@@ -6,7 +6,7 @@ Sheng Luan luansheng@ysfri.ac.cn
 
 Description
 
-This project presents a simulation study published in 2023. The R script provided here facilitates the simulation of breeding schemes for ONBS and CNBS, while also calculating essential population parameters.
+This project presents a simulation study (Optimal open nucleus breeding system for long-term genetic gain in the Pacific white shrimp using genomic selection) published in 2023. The R script provided here facilitates the simulation of breeding schemes for ONBS and CNBS, while also calculating essential population parameters.
 
 Requirements
 
